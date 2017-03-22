@@ -1,0 +1,9 @@
+.blog-body {
+   position: absolute;
+    left: 20%;
+}
+
+.blog-nav {
+    position: absolute;
+    left: 0;
+}

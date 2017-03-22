@@ -38,4 +38,8 @@ export class AppComponent implements OnInit {
   onSelectBlog(id: string) {
     console.log('Blog selected!', id);
   }
+
+  onNew() {
+
+  }
 }
