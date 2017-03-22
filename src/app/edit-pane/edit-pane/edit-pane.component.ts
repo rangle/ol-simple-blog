@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { BlogModel } from '../../shared/blog-model';
 
 @Component({
   selector: 'sb-edit-pane',
@@ -6,8 +7,8 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
   styleUrls: ['./edit-pane.component.css']
 })
 export class EditPaneComponent implements OnInit {
-  @Input() body = '';
-  @Output() save = new EventEmitter<string>();
+  @Input() blog: BlogModel;
+  @Output() save = new EventEmitter<BlogModel>();
 
   constructor() { }
 
@@ -15,6 +16,6 @@ export class EditPaneComponent implements OnInit {
   }
 
   onSave() {
-    this.save.emit(this.body);
+    this.save.emit(this.blog);
   }
 }

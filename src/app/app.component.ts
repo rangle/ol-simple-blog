@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { BlogModel } from './shared/blog-model';
 
 @Component({
   selector: 'sb-root',
@@ -6,12 +7,17 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app works!';
-  blog = 'Some existing blog';
+  blog: BlogModel = {
+    id: 'unique',
+    author: 'nobody',
+    title: 'Some blog',
+    body: 'Some text',
+    date: Date.now(),
+  };
   isEditMode = false;
 
-  onBlogSave(body: string) {
-    this.blog = body;
+  onBlogSave(blog: BlogModel) {
+    this.blog = blog;
     this.isEditMode = false;
   }
 

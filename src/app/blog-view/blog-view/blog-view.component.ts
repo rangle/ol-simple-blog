@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { BlogModel } from '../../shared/blog-model';
 
 @Component({
   selector: 'sb-blog-view',
@@ -6,7 +7,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
   styleUrls: ['./blog-view.component.css']
 })
 export class BlogViewComponent implements OnInit {
-  @Input() body = '';
+  @Input() blog: BlogModel;
   @Output() edit = new EventEmitter<void>();
 
   constructor() { }
