@@ -1,0 +1,32 @@
+{
+  "name": "backend",
+  "version": "0.0.1",
+  "description": "",
+  "main": "handler.js",
+  "scripts": {
+    "clean": "rimraf backend/js",
+    "prebuild": "npm run clean",
+    "build": "tsc",
+    "build:w": "tsc -w",
+    "mocha:w": "mocha -w --recursive \"js/**/*.spec.js\"",
+    "pretest": "npm run build",
+    "test": "mocha --recursive \"js/**/*.spec.js\"",
+    "pretest:w": "npm run clean && npm run build",
+    "test:w": "concurrently \"npm run build:w\" \"npm run mocha:w\""
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/chai": "^3.4.35",
+    "@types/mocha": "^2.2.40",
+    "@types/node": "^7.0.8",
+    "chai": "^3.5.0",
+    "concurrently": "^3.4.0",
+    "mocha": "^3.2.0",
+    "rimraf": "^2.6.1",
+    "typescript": "^2.2.1"
+  },
+  "dependencies": {
+    "aws-sdk": "^2.30.0"
+  }
+}

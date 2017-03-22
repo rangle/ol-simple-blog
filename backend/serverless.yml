@@ -1,0 +1,13 @@
+# For full config options, check the docs:
+#    docs.serverless.com
+
+service: aws-nodejs # NOTE: update this with your service name
+
+provider:
+  name: aws
+  runtime: nodejs4.3
+
+functions:
+  blog-list:
+    handler: blog-list.handler
+
