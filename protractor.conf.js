@@ -3,6 +3,8 @@
 
 const { SpecReporter } = require('jasmine-spec-reporter');
 
+const url = process.env.BLOG_URL || 'http://localhost:4200/';
+
 exports.config = {
   allScriptsTimeout: 11000,
   specs: [
@@ -12,7 +14,7 @@ exports.config = {
     'browserName': 'chrome'
   },
   directConnect: true,
-  baseUrl: 'http://localhost:4200/',
+  baseUrl: url, // 'http://localhost:4200/',
   framework: 'jasmine',
   jasmineNodeOpts: {
     showColors: true,
