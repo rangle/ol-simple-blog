@@ -8,4 +8,8 @@ export class SimpleBlogPage {
   getParagraphText() {
     return element(by.css('app-root h1')).getText();
   }
+
+  getTitle() {
+    return browser.getTitle();
+  }
 }

@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
+import { EditPaneModule } from './edit-pane/edit-pane.module';
 
 @NgModule({
   declarations: [
@@ -9,6 +10,7 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
+    EditPaneModule
   ],
   providers: [],
   bootstrap: [AppComponent]
