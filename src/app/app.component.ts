@@ -28,6 +28,9 @@ export class AppComponent implements OnInit {
   onBlogSave(blog: BlogModel) {
     this.blog = blog;
     this.isEditMode = false;
+    this._blogApi
+      .set(blog)
+      .subscribe();
   }
 
   onEdit() {
@@ -41,6 +44,8 @@ export class AppComponent implements OnInit {
   }
 
   onNew() {
-    BlogApiService.createBlog('Nobody');
+    this.blogList.push(
+      BlogApiService.createBlog('Nobody')
+    );
   }
 }

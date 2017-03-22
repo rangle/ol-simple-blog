@@ -23,8 +23,12 @@ export class BlogApiService {
   constructor(private _api: ApiService) { }
 
   list() {
-    return this._api.get('/blog/list')
+    return this._api.get('blog/list')
       .map((result) => result.json());
+  }
+
+  set(blog: BlogModel) {
+    return this._api.set('blog/set', blog);
   }
 
 }
