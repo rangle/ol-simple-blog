@@ -1,18 +1,21 @@
-<sb-blog-list
-        class="blog-nav"
-        [list]="blogList | async"
-        (selectBlog)="onSelectBlog($event)"
-></sb-blog-list>
-<div class="blog-body" >
-    <sb-edit-pane
-            *ngIf="isEditMode"
-            (save)="onBlogSave($event)"
-            [blog]="blog"
-    ></sb-edit-pane>
-    <sb-blog-view
-            *ngIf="!isEditMode"
-            (edit)="onEdit()"
-            [blog]="blog"
-    ></sb-blog-view>
-    <button (click)="onNew()">New</button>
+<div *ngIf="blogList && blogList.length">
+    <sb-blog-list
+            class="blog-nav"
+            [list]="blogList"
+            (selectBlog)="onSelectBlog($event)"
+    ></sb-blog-list>
+    <div class="blog-body" >
+        <sb-edit-pane
+                *ngIf="isEditMode"
+                (save)="onBlogSave($event)"
+                [blog]="blog"
+        ></sb-edit-pane>
+        <sb-blog-view
+                *ngIf="!isEditMode"
+                (edit)="onEdit()"
+                [blog]="blog"
+        ></sb-blog-view>
+        <button (click)="onNew()">New</button>
+    </div>
 </div>
+<div *ngIf="error">{{ error }}</div>
