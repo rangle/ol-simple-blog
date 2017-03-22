@@ -1,4 +1,7 @@
 <article>
     {{ blog?.body }}
 </article>
-<button (click)="onEdit()">Edit</button>
+<button
+        (click)="onEdit()"
+        data-e2e-button="blog-edit"
+>Edit</button>
