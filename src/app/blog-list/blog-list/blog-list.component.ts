@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { BlogModel } from '../../shared/blog-model';
 
 @Component({
   selector: 'sb-blog-list',
@@ -6,10 +7,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./blog-list.component.css']
 })
 export class BlogListComponent implements OnInit {
+  @Input() list: BlogModel[];
+  @Output() selectBlog = new EventEmitter<string>();
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  onClick(id: string) {
+    this.selectBlog.emit(id);
   }
 
 }

@@ -1,13 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { BlogModel } from './shared/blog-model';
 import { BlogApiService } from './shared/blog-api.service';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'sb-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   blog: BlogModel = {
     id: 'unique',
     author: 'nobody',
@@ -16,9 +17,13 @@ export class AppComponent {
     date: Date.now(),
   };
   isEditMode = false;
+  blogList: Observable<BlogModel[]>;
 
   constructor(private _blogApi: BlogApiService) {
-    (<any>window).blogs = _blogApi;
+  }
+
+  ngOnInit() {
+    this.blogList = this._blogApi.list();
   }
 
   onBlogSave(blog: BlogModel) {
@@ -28,5 +33,9 @@ export class AppComponent {
 
   onEdit() {
     this.isEditMode = true;
+  }
+
+  onSelectBlog(id: string) {
+    console.log('Blog selected!', id);
   }
 }

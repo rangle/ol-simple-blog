@@ -1,3 +1,6 @@
-<p>
-  blog-list works!
-</p>
+<ul>
+    <li
+            *ngFor="let item of list"
+            (click)="onClick(item.id)"
+    >{{ item.title }}</li>
+</ul>

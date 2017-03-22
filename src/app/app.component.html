@@ -1,4 +1,7 @@
-<sb-blog-list></sb-blog-list>
+<sb-blog-list
+        [list]="blogList | async"
+        (selectBlog)="onSelectBlog($event)"
+></sb-blog-list>
 <sb-edit-pane
         *ngIf="isEditMode"
         (save)="onBlogSave($event)"
