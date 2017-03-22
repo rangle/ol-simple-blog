@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { BlogModel } from './shared/blog-model';
+import { BlogApiService } from './shared/blog-api.service';
 
 @Component({
   selector: 'sb-root',
@@ -15,6 +16,10 @@ export class AppComponent {
     date: Date.now(),
   };
   isEditMode = false;
+
+  constructor(private _blogApi: BlogApiService) {
+    (<any>window).blogs = _blogApi;
+  }
 
   onBlogSave(blog: BlogModel) {
     this.blog = blog;
