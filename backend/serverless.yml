@@ -1,7 +1,7 @@
 # For full config options, check the docs:
 #    docs.serverless.com
 
-service: aws-nodejs # NOTE: update this with your service name
+service: ol-simple-blog # NOTE: update this with your service name
 
 provider:
   name: aws
