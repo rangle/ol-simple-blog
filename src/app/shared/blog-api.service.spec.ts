@@ -1,15 +1,10 @@
-import { TestBed, inject } from '@angular/core/testing';
-
 import { BlogApiService } from './blog-api.service';
 
 describe('BlogApiService', () => {
-  beforeEach(() => {
-    TestBed.configureTestingModule({
-      providers: [BlogApiService]
+  it('it should be instantiatable', () => {
+    const blog = new BlogApiService(<any>{
+      list: () => {},
     });
+    expect(blog).toBeTruthy();
   });
-
-  it('should ...', inject([BlogApiService], (service: BlogApiService) => {
-    expect(service).toBeTruthy();
-  }));
 });
