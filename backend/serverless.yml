@@ -50,6 +50,13 @@ functions:
           path: blog/set # Path for this endpoint
           method: post     # HTTP method for this endpoint
           cors: true
+  blog-get:
+    handler: blog-get.handler
+    events: # The Events that trigger this Function
+      - http:
+          path: blog/get # Path for this endpoint
+          method: get     # HTTP method for this endpoint
+          cors: true
 
 resources:
   Resources:
