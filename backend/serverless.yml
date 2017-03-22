@@ -6,8 +6,49 @@ service: ol-simple-blog # NOTE: update this with your service name
 provider:
   name: aws
   runtime: nodejs4.3
+  memorySize: 128
+  iamRoleStatements:
+      -  Effect: "Allow"
+         Action:
+           - "s3:ListBucket"
+         Resource:
+           Fn::Join:
+             - ""
+             - - "arn:aws:s3:::"
+               - Ref: SimpleBlogsBucket
+      -  Effect: "Allow"
+         Action:
+           - "s3:PutObject"
+         Resource:
+           Fn::Join:
+             - ""
+             - - "arn:aws:s3:::"
+               - Ref : SimpleBlogsBucket
+               - "/*"
+      -  Effect: "Allow"
+         Action:
+           - "s3:GetObject"
+         Resource:
+           Fn::Join:
+             - ""
+             - - "arn:aws:s3:::"
+               - Ref : SimpleBlogsBucket
+               - "/*"
 
 functions:
   blog-list:
     handler: blog-list.handler
+    events: # The Events that trigger this Function
+      - http:
+          path: blog/list # Path for this endpoint
+          method: get     # HTTP method for this endpoint
+          cors: true
 
+resources:
+  Resources:
+    SimpleBlogsBucket:
+      Type: AWS::S3::Bucket
+      Properties:
+        BucketName: simple-blogs-bucket
+        VersioningConfiguration:
+          Status: Enabled
