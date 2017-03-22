@@ -1,5 +1,10 @@
 <sb-edit-pane
+        *ngIf="isEditMode"
         (save)="onBlogSave($event)"
         [body]="blog"
 ></sb-edit-pane>
-<sb-blog-view></sb-blog-view>
+<sb-blog-view
+        *ngIf="!isEditMode"
+        (edit)="onEdit()"
+        [body]="blog"
+></sb-blog-view>

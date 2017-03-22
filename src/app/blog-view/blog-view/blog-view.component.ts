@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'sb-blog-view',
@@ -6,10 +6,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./blog-view.component.css']
 })
 export class BlogViewComponent implements OnInit {
+  @Input() body = '';
+  @Output() edit = new EventEmitter<void>();
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  onEdit() {
+    this.edit.emit();
   }
 
 }
