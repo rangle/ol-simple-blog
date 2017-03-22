@@ -1,4 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { FormsModule } from '@angular/forms';
 
 import { EditPaneComponent } from './edit-pane.component';
 
@@ -8,6 +9,7 @@ describe('EditPaneComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [FormsModule],
       declarations: [ EditPaneComponent ]
     })
     .compileComponents();

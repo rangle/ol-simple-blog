@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app works!';
+  blog = 'Some existing blog';
+
+  onBlogSave(body: string) {
+    console.log('body', body);
+    this.blog = body;
+  }
 }

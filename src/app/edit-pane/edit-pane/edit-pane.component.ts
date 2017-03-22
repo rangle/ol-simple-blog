@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'sb-edit-pane',
@@ -6,10 +6,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./edit-pane.component.css']
 })
 export class EditPaneComponent implements OnInit {
+  @Input() body = '';
+  @Output() save = new EventEmitter<string>();
 
   constructor() { }
 
   ngOnInit() {
   }
 
+  onSave() {
+    this.save.emit(this.body);
+  }
 }
