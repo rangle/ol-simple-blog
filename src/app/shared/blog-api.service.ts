@@ -24,11 +24,15 @@ export class BlogApiService {
 
   list() {
     return this._api.get('blog/list')
-      .map((result) => result.json());
+      .map((result) => result.json().keys);
   }
 
   set(blog: BlogModel) {
     return this._api.set('blog/set', blog);
   }
 
+  get(id: string) {
+    return this._api.get(`blog/get?id=${id}`)
+      .map((result) => JSON.parse(result.json()));
+  }
 }

@@ -7,7 +7,7 @@ import { BlogModel } from '../../shared/blog-model';
   styleUrls: ['./blog-list.component.css']
 })
 export class BlogListComponent implements OnInit {
-  @Input() list: BlogModel[];
+  @Input() list: string[];
   @Output() selectBlog = new EventEmitter<string>();
 
   constructor() { }

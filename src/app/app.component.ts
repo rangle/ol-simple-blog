@@ -10,23 +10,26 @@ import { BlogApiService } from './shared/blog-api.service';
 export class AppComponent implements OnInit {
   blog: BlogModel;
   isEditMode = false;
-  blogList: BlogModel[];
+  blogList: string[];
   error: string;
 
   constructor(private _blogApi: BlogApiService) {
   }
 
-  ngOnInit() {
+  list() {
     this._blogApi.list()
-      .subscribe((blogList: BlogModel[]) => {
+      .subscribe((blogList: string[]) => {
         this.blogList = blogList;
       }, (err) => {
         this.error = err.message;
       });
   }
 
+  ngOnInit() {
+    this.list();
+  }
+
   onBlogSave(blog: BlogModel) {
-    this.blog = blog;
     this.isEditMode = false;
     this._blogApi
       .set(blog)
@@ -38,14 +41,13 @@ export class AppComponent implements OnInit {
   }
 
   onSelectBlog(id: string) {
-    this.blog = this.blogList.find((blog: BlogModel) => {
-      return blog.id === id;
+    this._blogApi.get(id).subscribe((blog: BlogModel) => {
+      this.blog = blog;
     });
   }
 
   onNew() {
-    this.blogList.push(
-      BlogApiService.createBlog('Nobody')
-    );
+    this._blogApi.set(BlogApiService.createBlog('nobody'))
+      .subscribe(() => { this.list(); });
   }
 }
