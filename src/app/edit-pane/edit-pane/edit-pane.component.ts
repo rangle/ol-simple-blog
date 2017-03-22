@@ -7,7 +7,13 @@ import { BlogModel } from '../../shared/blog-model';
   styleUrls: ['./edit-pane.component.css']
 })
 export class EditPaneComponent implements OnInit {
-  @Input() blog: BlogModel;
+  // @todo actually get the testing framework to do this
+  @Input() blog: BlogModel = {
+    id: 'empty-blog',
+    title: 'empty title',
+    author: '',
+    date: Date.now()
+  };
   @Output() save = new EventEmitter<BlogModel>();
 
   constructor() { }
