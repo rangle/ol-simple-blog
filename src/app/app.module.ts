@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { EditPaneModule } from './edit-pane/edit-pane.module';
+import { BlogViewModule } from './blog-view/blog-view.module';
 
 @NgModule({
   declarations: [
@@ -10,6 +11,9 @@ import { EditPaneModule } from './edit-pane/edit-pane.module';
   ],
   imports: [
     BrowserModule,
+
+    // custom modules
+    BlogViewModule,
     EditPaneModule
   ],
   providers: [],
